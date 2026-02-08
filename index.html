@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ng Zhi Yang | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-inner">
+            <div class="loader-bars">
+                <div class="loader-bar"></div>
+                <div class="loader-bar"></div>
+                <div class="loader-bar"></div>
+                <div class="loader-bar"></div>
+                <div class="loader-bar"></div>
+            </div>
+            <div class="loader-name">
+                <span>N</span><span>G</span><span>&nbsp;</span><span>Z</span><span>H</span><span>I</span><span>&nbsp;</span><span>Y</span><span>A</span><span>N</span><span>G</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
+    <!-- Scroll Progress -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Side Dots Navigation -->
+    <nav class="side-nav" id="sideNav">
+        <a href="#hero" class="side-dot active" data-label="Home"></a>
+        <a href="#about" class="side-dot" data-label="About"></a>
+        <a href="#experience" class="side-dot" data-label="Experience"></a>
+        <a href="#projects" class="side-dot" data-label="Projects"></a>
+        <a href="#skills" class="side-dot" data-label="Skills"></a>
+        <a href="#achievements" class="side-dot" data-label="Awards"></a>
+        <a href="#certifications" class="side-dot" data-label="Certs"></a>
+        <a href="#education" class="side-dot" data-label="Education"></a>
+        <a href="#contact" class="side-dot" data-label="Contact"></a>
+    </nav>
+
+    <!-- Top Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo"><span class="bracket">&lt;</span>ZY<span class="bracket">/&gt;</span></a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#about" class="nav-link"><span class="num">01.</span>About</a></li>
+                <li><a href="#experience" class="nav-link"><span class="num">02.</span>Experience</a></li>
+                <li><a href="#projects" class="nav-link"><span class="num">03.</span>Projects</a></li>
+                <li><a href="#skills" class="nav-link"><span class="num">04.</span>Skills</a></li>
+                <li><a href="#achievements" class="nav-link"><span class="num">05.</span>Achievements</a></li>
+                <li><a href="#certifications" class="nav-link"><span class="num">06.</span>Certs</a></li>
+                <li><a href="#education" class="nav-link"><span class="num">07.</span>Education</a></li>
+                <li><a href="#contact" class="nav-link"><span class="num">08.</span>Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero" id="hero">
+        <canvas id="heroCanvas"></canvas>
+        <div class="hero-content">
+            <div class="hero-badge"><span class="badge-pulse"></span>Available for Opportunities</div>
+            <h1 class="hero-name">
+                <span class="line"><span class="word">Ng Zhi Yang</span></span>
+                <!-- <span class="line"><span class="word">Yang<span class="accent"></span></span></span> -->
+            </h1>
+            <div class="hero-role">
+                <span id="roleText"></span><span class="caret">|</span>
+            </div>
+            <p class="hero-desc">Final Year EEE (Robotics) @ Singapore Polytechnic &mdash; Building intelligent systems at the intersection of robotics, AI, and full stack development.</p>
+            <div class="hero-btns">
+                <a href="#projects" class="btn-glow">View My Work</a>
+                <a href="#contact" class="btn-ghost">Say Hello <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="hero-socials">
+                <a href="https://www.linkedin.com/in/ng-zhi-yang/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
+                <a href="mailto:zhiyang138@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://github.com/" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+        <div class="hero-scroll"><div class="scroll-line"></div><span>SCROLL</span></div>
+    </section>
+
+    <!-- ========== ABOUT ========== -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="section-header"><span class="section-num">01</span><h2>About Me</h2><div class="section-line"></div></div>
+            <div class="about-grid">
+                <div class="about-text reveal-up">
+                    <p>From a very young age, I have always been curious about how things work &mdash; from simple circuits to complex machines. This curiosity led me to pursue a <strong>Diploma in Electrical and Electronic Engineering specialising in Robotics</strong> at Singapore Polytechnic.</p>
+                    <p>I am passionate about solving real-world problems through technology, combining both hardware and software to create smarter and more efficient systems. Beyond my studies, I actively participate in hackathons and robotics competitions.</p>
+                    <p>I am driven by <strong>collaboration, curiosity and continuous learning</strong>, where I aim to turn innovative ideas into meaningful projects in Robotics and Full Stack Development.</p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat glass reveal-up"><div class="stat-num" data-count="7">0</div><div class="stat-lbl">Awards Won</div></div>
+                    <div class="stat glass reveal-up"><div class="stat-num" data-count="12">0</div><div class="stat-lbl">Certifications</div></div>
+                    <div class="stat glass reveal-up"><div class="stat-num" data-count="5">0</div><div class="stat-lbl">Projects Built</div></div>
+                    <div class="stat glass reveal-up"><div class="stat-num" data-count="11">0</div><div class="stat-lbl">Months at Airbus</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== EXPERIENCE ========== -->
+    <section class="section section-dark" id="experience">
+        <div class="container">
+            <div class="section-header"><span class="section-num">02</span><h2>Experience</h2><div class="section-line"></div></div>
+            <div class="timeline">
+
+                <div class="tl-item reveal-up">
+                    <div class="tl-dot"></div>
+                    <div class="tl-card glass">
+                        <div class="tl-top"><div><h3>Humanoid Robot Developer</h3><h4>Singapore Polytechnic</h4></div><span class="tl-date">Jan 2026 &ndash; Present</span></div>
+                        <ul>
+                            <li>Contributing to the development of the <strong>Booster Humanoid Robot</strong> for <strong>RoboCup Incheon 2026</strong>, one of the world's most prestigious robotics competitions.</li>
+                            <li>SP Team will represent Singapore in the <strong>3v3 Humanoid Soccer League</strong>, where autonomous robots play soccer against international teams.</li>
+                            <li>Using <strong>NVIDIA Isaac Sim</strong> for reinforcement learning, developing and training AI models for robot soccer skills and strategy.</li>
+                            <li>Designing and coding the <strong>AI strategy</strong> for team play, including decision-making, path planning, and real-time adaptation.</li>
+                            <li>Collaborating on robot hardware, perception, and control systems.</li>
+                        </ul>
+                        <div class="tl-tags"><span>RoboCup 2026</span><span>Isaac Sim</span><span>RL</span><span>AI Strategy</span><span>Team Singapore</span></div>
+                    </div>
+                </div>
+
+                <div class="tl-item reveal-up">
+                    <div class="tl-dot"></div>
+                    <div class="tl-card glass">
+                        <div class="tl-top"><div><h3>Flight Simulator Intern</h3><h4>Airbus Asia Training Centre (AATC)</h4></div><span class="tl-date">Mar 2025 &ndash; Jan 2026</span></div>
+                        <ul>
+                            <li>Developed <strong>NOTAM 3.0</strong>, a full stack web app that reduces paper usage by <strong>80%</strong> and improves efficiency by <strong>70%</strong>.</li>
+                            <li>Configured and maintained <strong>Full Flight Simulators (FFS)</strong> and <strong>Airbus Pilot Trainers (APT)</strong>.</li>
+                            <li>Troubleshot electrical, motion, visual, and interface components.</li>
+                        </ul>
+                        <div class="tl-tags"><span>Full Stack</span><span>Simulators</span><span>Troubleshooting</span><span>Automation</span></div>
+                    </div>
+                </div>
+
+                <div class="tl-item reveal-up">
+                    <div class="tl-dot"></div>
+                    <div class="tl-card glass">
+                        <div class="tl-top"><div><h3>Student Chairman</h3><h4>RoboCup Singapore</h4></div><span class="tl-date">Oct 2024 &ndash; Apr 2025</span></div>
+                        <ul>
+                            <li>Led student organizing team for <strong>RoboCup Singapore Open 2025</strong>.</li>
+                            <li>Coordinated <strong>100+ student volunteers</strong>.</li>
+                            <li>Implemented efficient systems and strategies for all event roles.</li>
+                        </ul>
+                        <div class="tl-tags"><span>Leadership</span><span>Event Management</span><span>100+ Volunteers</span></div>
+                    </div>
+                </div>
+
+                <div class="tl-item reveal-up">
+                    <div class="tl-dot"></div>
+                    <div class="tl-card glass">
+                        <div class="tl-top"><div><h3>Student Co-Chair</h3><h4>RoboCup Singapore</h4></div><span class="tl-date">Apr &ndash; Oct 2024</span></div>
+                        <ul>
+                            <li>Led Events Operating Team during <strong>RoboCup Singapore Open 2024</strong>.</li>
+                            <li>Streamlined workflows, boosting performance and efficiency.</li>
+                        </ul>
+                        <div class="tl-tags"><span>Operations</span><span>Process Improvement</span></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PROJECTS ========== -->
+    <section class="section" id="projects">
+        <div class="container">
+            <div class="section-header"><span class="section-num">03</span><h2>Featured Projects</h2><div class="section-line"></div></div>
+            <div class="projects-masonry">
+
+                <article class="proj-card tilt reveal-up featured">
+                    <div class="proj-glow"></div>
+                    <span class="proj-num">01</span>
+                    <div class="proj-icon"><i class="fas fa-futbol"></i></div>
+                    <span class="proj-date">2026</span>
+                    <h3>Booster Humanoid Robot</h3>
+                    <p class="proj-sub">RoboCup Incheon 2026 &bull; Singapore Polytechnic</p>
+                    <p>Team Singapore's entry for the 3v3 Humanoid Soccer League, using a commercial robot from Booster Robotics. Our team developed advanced AI code, reinforcement learning, and improved hardware to compete globally.</p>
+                    <ul><li>AI strategy &amp; Isaac Sim reinforcement learning</li><li>Hardware/software enhancements &amp; perception systems</li><li>Representing Singapore at the world's top robotics event</li></ul>
+                    <div class="proj-tags"><span>RoboCup</span><span>Isaac Sim</span><span>RL</span><span>AI</span><span>Hardware</span></div>
+                </article>
+
+                <article class="proj-card tilt reveal-up featured">
+                    <div class="proj-glow"></div>
+                    <span class="proj-num">02</span>
+                    <div class="proj-icon"><i class="fas fa-laptop-code"></i></div>
+                    <span class="proj-date">2025</span>
+                    <h3>NOTAM 3.0</h3>
+                    <p class="proj-sub">Simulator Notification System &bull; Airbus AATC</p>
+                    <p>In-house full stack web app notifying simulator users of anomalies with workarounds. Major upgrade from legacy system with modern UI/UX and automated workflows.</p>
+                    <ul><li>Reduced paper usage by 80%, improved efficiency by 70%</li><li>Full stack development, UI/UX design</li><li>Seamless transition from legacy system</li></ul>
+                    <div class="proj-tags"><span>Full Stack</span><span>React</span><span>UI/UX</span><span>Automation</span></div>
+                </article>
+
+                <article class="proj-card tilt reveal-up">
+                    <div class="proj-glow"></div>
+                    <span class="proj-num">03</span>
+                    <div class="proj-icon"><i class="fas fa-heartbeat"></i></div>
+                    <span class="proj-date">Mar 2024</span>
+                    <h3>KofiTalk</h3>
+                    <p class="proj-sub">Temasek Foundation Scale Programme</p>
+                    <p>Board game promoting preventive healthcare for seniors in Chinatown, helping elderly learn health-related issues in a fun and engaging way.</p>
+                    <div class="proj-tags"><span>Healthcare</span><span>Community</span><span>Game Design</span></div>
+                </article>
+
+                <article class="proj-card tilt reveal-up">
+                    <div class="proj-glow"></div>
+                    <span class="proj-num">04</span>
+                    <div class="proj-icon"><i class="fas fa-truck"></i></div>
+                    <span class="proj-date">Oct 2022 &ndash; Feb 2023</span>
+                    <h3>GarBat Truck</h3>
+                    <p class="proj-sub">Autonomous Waste Collection Robot</p>
+                    <p>Arduino-based robotic truck detecting and collecting waste using ultrasonic sensors. Supports UN SDG 11 &amp; SDG 3.</p>
+                    <ul><li>Environmental impact &amp; urban cleanliness</li><li>Worker safety &amp; eco-friendly development</li></ul>
+                    <div class="proj-tags"><span>Arduino</span><span>Robotics</span><span>Sensors</span><span>UN SDG</span></div>
+                </article>
+
+                <article class="proj-card tilt reveal-up">
+                    <div class="proj-glow"></div>
+                    <span class="proj-num">05</span>
+                    <div class="proj-icon"><i class="fas fa-home"></i></div>
+                    <span class="proj-date">Apr &ndash; Aug 2022</span>
+                    <h3>Smart Home</h3>
+                    <p class="proj-sub">Arduino Home Automation</p>
+                    <p>Home automation simulation with centralised control for household equipment &mdash; aircon, burglar alarm, fire alarm, and washing machine.</p>
+                    <div class="proj-tags"><span>Arduino</span><span>IoT</span><span>Automation</span></div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SKILLS ========== -->
+    <section class="section section-dark" id="skills">
+        <div class="container">
+            <div class="section-header"><span class="section-num">04</span><h2>Skills & Technologies</h2><div class="section-line"></div></div>
+            <div class="skills-grid">
+                <div class="skill-group glass reveal-up"><h3><i class="fas fa-laptop-code"></i> Languages</h3><div class="pills"><span>Python</span><span>C++</span><span>JavaScript</span><span>HTML</span><span>CSS</span><span>SQL</span></div></div>
+                <div class="skill-group glass reveal-up"><h3><i class="fas fa-layer-group"></i> Frameworks & Tools</h3><div class="pills"><span>React</span><span>ROS2</span><span>Node.js</span><span>Git</span><span>Isaac Sim</span></div></div>
+                <div class="skill-group glass reveal-up"><h3><i class="fas fa-robot"></i> Robotics & Hardware</h3><div class="pills"><span>ROS2</span><span>Embedded Systems</span><span>Motion Systems</span><span>Visual Systems</span><span>Arduino</span><span>Circuit Design</span></div></div>
+                <div class="skill-group glass reveal-up"><h3><i class="fas fa-brain"></i> AI & Data</h3><div class="pills"><span>Reinforcement Learning</span><span>Prompt Engineering</span><span>Machine Learning</span><span>Data Analysis</span></div></div>
+                <div class="skill-group glass reveal-up"><h3><i class="fas fa-users"></i> Soft Skills & Languages</h3><div class="pills"><span>Leadership</span><span>Teamwork</span><span>Problem Solving</span><span>Adaptability</span><span>English (Native)</span><span>Chinese (Native)</span></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== ACHIEVEMENTS ========== -->
+    <section class="section" id="achievements">
+        <div class="container">
+            <div class="section-header"><span class="section-num">05</span><h2>Achievements & Awards</h2><div class="section-line"></div></div>
+            <div class="awards-grid">
+                <div class="award glass tilt reveal-up gold"><div class="award-medal">&#129351;</div><span class="award-yr">Mar 2025</span><h3>1st &mdash; SMORPHI Imaginary Challenge (Senior)</h3><p>SUTD &amp; Wefaa Robotics</p></div>
+                <div class="award glass tilt reveal-up gold"><div class="award-medal">&#129351;</div><span class="award-yr">Mar 2025</span><h3>1st &mdash; SMORPHI Robotics Challenge (Senior)</h3><p>SUTD &amp; Wefaa Robotics</p></div>
+                <div class="award glass tilt reveal-up silver"><div class="award-medal">&#129352;</div><span class="award-yr">Sep 2024</span><h3>2nd &mdash; NRC SMORPHI Autonomous</h3><p>Science Center Singapore</p></div>
+                <div class="award glass tilt reveal-up silver"><div class="award-medal">&#129352;</div><span class="award-yr">Sep 2024</span><h3>2nd &mdash; NRC SMORPHI Pilot</h3><p>Science Center Singapore</p></div>
+                <div class="award glass tilt reveal-up gold"><div class="award-medal">&#129351;</div><span class="award-yr">Mar 2024</span><h3>1st &mdash; Optimal Coder, SMORPHI Imaginary (Senior)</h3><p>Wefaa Robotics &amp; SP</p></div>
+                <div class="award glass tilt reveal-up gold"><div class="award-medal">&#129351;</div><span class="award-yr">Mar 2024</span><h3>1st &mdash; SMORPHI Robotics Design (Senior)</h3><p>SUTD &amp; Wefaa Robotics</p></div>
+                <div class="award glass tilt reveal-up silver"><div class="award-medal">&#129352;</div><span class="award-yr">Mar 2024</span><h3>2nd &mdash; SMORPHI Robotics Challenge (Senior)</h3><p>SUTD &amp; Wefaa Robotics</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CERTIFICATIONS ========== -->
+    <section class="section section-dark" id="certifications">
+        <div class="container">
+            <div class="section-header"><span class="section-num">06</span><h2>Licenses & Certifications</h2><div class="section-line"></div></div>
+            <div class="certs-grid">
+                    <a class="cert glass" href="https://www.linkedin.com/learning/certificates/2ddb063ce0d634c3ed0950760caaf33912ead74e82d00095544371a7a0ba2d79?u=2122804" target="_blank" rel="noopener"><i class="fas fa-code cert-icon"></i><strong>Full-Stack Web Developer</strong><span class="cert-issuer">LinkedIn &bull; Dec 2025</span><span class="cert-view">View Credential <i class="fas fa-arrow-up-right-from-square"></i></span></a>
+                    <a class="cert glass" href="https://www.linkedin.com/learning/certificates/9dfd3294ebd9bbf9da7609722f856a1149929d01d6d842df5a58199bb515f013?u=2122804" target="_blank" rel="noopener"><i class="fas fa-user cert-icon"></i><strong>User Experience</strong><span class="cert-issuer">LinkedIn &bull; Dec 2025</span><span class="cert-view">View Credential <i class="fas fa-arrow-up-right-from-square"></i></span></a>
+                    <a class="cert glass" href="https://www.linkedin.com/learning/certificates/cfe55678c3894a0b6419de3366ab297662b3a4626b045292508687b73a6f7d18?u=2122804" target="_blank" rel="noopener"><i class="fab fa-react cert-icon"></i><strong>React Essential Training</strong><span class="cert-issuer">LinkedIn &bull; Dec 2025</span><span class="cert-view">View Credential <i class="fas fa-arrow-up-right-from-square"></i></span></a>
+                    <a class="cert glass" href="https://www.datacamp.com/completed/statement-of-accomplishment/course/936450e0a88f6f800b6d49f22a30a0c24237b2bc" target="_blank" rel="noopener"><i class="fas fa-robot cert-icon"></i><strong>Understanding ChatGPT</strong><span class="cert-issuer">DataCamp &bull; Dec 2025</span><span class="cert-view">View Credential <i class="fas fa-arrow-up-right-from-square"></i></span></a>
+                    <a class="cert glass" href="https://www.datacamp.com/completed/statement-of-accomplishment/course/d056d0429dc786d8813c1b7b8d69d0c2854bb70a" target="_blank" rel="noopener"><i class="fas fa-chart-bar cert-icon"></i><strong>Data Analysis in Sheets</strong><span class="cert-issuer">DataCamp &bull; Nov 2025</span><span class="cert-view">View Credential <i class="fas fa-arrow-up-right-from-square"></i></span></a>
+                    <a class="cert glass" href="https://www.datacamp.com/completed/statement-of-accomplishment/course/c6ec81da706fff42fdf72b4a44a2d01c2d3e1b2a" target="_blank" rel="noopener"><i class="fab fa-python cert-icon"></i><strong>Intermediate Python</strong><span class="cert-issuer">DataCamp &bull; Nov 2025</span><span class="cert-view">View Credential <i class="fas fa-arrow-up-right-from-square"></i></span></a>
+                    <a class="cert glass" href="https://www.datacamp.com/completed/statement-of-accomplishment/course/d056d0429dc786d8813c1b7b8d69d0c2854bb70a" target="_blank" rel="noopener"><i class="fas fa-table cert-icon"></i><strong>Intro to Google Sheets</strong><span class="cert-issuer">DataCamp &bull; Nov 2025</span><span class="cert-view">View Credential <i class="fas fa-arrow-up-right-from-square"></i></span></a>
+                    <a class="cert glass" href="https://www.datacamp.com/completed/statement-of-accomplishment/course/4cabc7c2b03d3be039cc653d43c4137ed09687a8" target="_blank" rel="noopener"><i class="fas fa-brain cert-icon"></i><strong>Machine Learning</strong><span class="cert-issuer">DataCamp &bull; Nov 2025</span><span class="cert-view">View Credential <i class="fas fa-arrow-up-right-from-square"></i></span></a>
+                    <a class="cert glass" href="https://www.datacamp.com/completed/statement-of-accomplishment/course/49ac3234e43b57c4a51eb1b4abeb9cd52082132f" target="_blank" rel="noopener"><i class="fas fa-terminal cert-icon"></i><strong>Prompt Engineering</strong><span class="cert-issuer">DataCamp &bull; Nov 2025</span><span class="cert-view">View Credential <i class="fas fa-arrow-up-right-from-square"></i></span></a>
+                    <a class="cert glass" href="https://coursera.org/share/1f19d7f9689d8d03f8c2535606c3884d" target="_blank" rel="noopener"><i class="fas fa-microscope cert-icon"></i><strong>Research Methods</strong><span class="cert-issuer">Coursera &bull; Nov 2025</span><span class="cert-view">View Credential <i class="fas fa-arrow-up-right-from-square"></i></span></a>
+                    <a class="cert glass" href="https://www.datacamp.com/completed/statement-of-accomplishment/course/d992764cd22ee7db846a63f98302c0bf87d6ece8" target="_blank" rel="noopener"><i class="fab fa-python cert-icon"></i><strong>Intro to Python</strong><span class="cert-issuer">DataCamp &bull; Oct 2025</span><span class="cert-view">View Credential <i class="fas fa-arrow-up-right-from-square"></i></span></a>
+                    <a class="cert glass" href="https://www.datacamp.com/completed/statement-of-accomplishment/course/f1f08229dff696cec35d58016e60186a0dafc841" target="_blank" rel="noopener"><i class="fas fa-database cert-icon"></i><strong>Intro to SQL</strong><span class="cert-issuer">DataCamp &bull; Oct 2025</span><span class="cert-view">View Credential <i class="fas fa-arrow-up-right-from-square"></i></span></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== EDUCATION ========== -->
+    <section class="section" id="education">
+        <div class="container">
+            <div class="section-header"><span class="section-num">07</span><h2>Education</h2><div class="section-line"></div></div>
+            <div class="edu-grid">
+                <div class="edu-card glass reveal-up"><span class="edu-yr">2023 &ndash; 2026</span><h3>Singapore Polytechnic</h3><p>Diploma in Electrical &amp; Electronics Engineering (Robotics)</p></div>
+                <div class="edu-card glass reveal-up"><span class="edu-yr">2019 &ndash; 2022</span><h3>Manjusri Secondary School</h3><p>GCE O Levels</p></div>
+                <div class="edu-card glass reveal-up"><span class="edu-yr">2013 &ndash; 2018</span><h3>Maha Bodhi School</h3><p>PSLE</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CONTACT ========== -->
+    <section class="section section-dark" id="contact">
+        <div class="container">
+            <div class="section-header"><span class="section-num">08</span><h2>Get In Touch</h2><div class="section-line"></div></div>
+            <div class="contact-wrap reveal-up">
+                <h2 class="contact-big">Let's build something <span class="accent">amazing</span> together.</h2>
+                <p class="contact-desc">I'm open to opportunities, freelance projects, and collaborations. Whether you have a question or just want to say hello &mdash; reach out!</p>
+                <div class="contact-grid">
+                    <a href="mailto:zhiyang138@gmail.com" class="contact-card glass"><i class="fas fa-envelope"></i><strong>Email</strong><span>zhiyang138@gmail.com</span></a>
+                    <a href="https://www.linkedin.com/in/ng-zhi-yang/" target="_blank" rel="noopener" class="contact-card glass"><i class="fab fa-linkedin-in"></i><strong>LinkedIn</strong><span>in/ng-zhi-yang</span></a>
+                    <a href="https://github.com/zhiyang-tech" target="_blank" rel="noopener" class="contact-card glass"><i class="fab fa-github"></i><strong>GitHub</strong><span>View repositories</span></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer"><div class="container"><p>Designed &amp; Built by <strong>Ng Zhi Yang</strong> &copy; 2026</p></div></footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
