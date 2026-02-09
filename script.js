@@ -356,4 +356,21 @@ document.querySelectorAll('.tilt').forEach(card => {
             }
         });
     });
+
+    // Hero resume button
+    document.querySelectorAll('.resume-btn[data-pdf]').forEach(link => {
+        const open = e => {
+            e.preventDefault();
+            const pdf = link.dataset.pdf;
+            if (pdf) openPdf(pdf);
+        };
+
+        link.addEventListener('click', open);
+        link.addEventListener('keydown', e => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                open(e);
+            }
+        });
+    });
 })();
