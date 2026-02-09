@@ -31,12 +31,12 @@ window.addEventListener('load', () => {
 
     // Use event delegation for hover effect (handles dynamic elements too)
     document.addEventListener('mouseover', e => {
-        if (e.target.closest('a, button, .btn-glow, .btn-ghost, .proj-card, .cert, .contact-card, .award, .stat, .nav-toggle')) {
+        if (e.target.closest('a, button, .btn-glow, .btn-ghost, .proj-card, .cert, .contact-card, .award, .stat, .nav-toggle, .testimonial-card, .pdf-modal-close')) {
             ring.classList.add('hover');
         }
     });
     document.addEventListener('mouseout', e => {
-        if (e.target.closest('a, button, .btn-glow, .btn-ghost, .proj-card, .cert, .contact-card, .award, .stat, .nav-toggle')) {
+        if (e.target.closest('a, button, .btn-glow, .btn-ghost, .proj-card, .cert, .contact-card, .award, .stat, .nav-toggle, .testimonial-card, .pdf-modal-close')) {
             ring.classList.remove('hover');
         }
     });
@@ -69,10 +69,34 @@ const navMenu = document.getElementById('navMenu');
 navToggle.addEventListener('click', () => {
     navToggle.classList.toggle('active');
     navMenu.classList.toggle('open');
+    // Lock body scroll when menu is open (fixes iPad overlay/scroll bleed)
+    document.body.classList.toggle('nav-open', navMenu.classList.contains('open'));
+
+    // Always show menu from the top, regardless of current page scroll
+    if (navMenu.classList.contains('open')) {
+        navMenu.scrollTop = 0;
+    }
 });
 navMenu.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => { navToggle.classList.remove('active'); navMenu.classList.remove('open'); });
+    link.addEventListener('click', () => {
+        navToggle.classList.remove('active');
+        navMenu.classList.remove('open');
+        document.body.classList.remove('nav-open');
+    });
 });
+
+// If the screen is resized wider (e.g. iPad rotate), ensure the overlay menu is closed
+function syncNavOnResize() {
+    // Keep in sync with the CSS breakpoint used for the overlay nav
+    const OVERLAY_BREAKPOINT = 1600;
+    if (window.innerWidth > OVERLAY_BREAKPOINT) {
+        navToggle.classList.remove('active');
+        navMenu.classList.remove('open');
+        document.body.classList.remove('nav-open');
+    }
+}
+window.addEventListener('resize', syncNavOnResize);
+window.addEventListener('orientationchange', syncNavOnResize);
 
 // ——————————— SIDE NAV ACTIVE ———————————
 const sections = document.querySelectorAll('section');
@@ -126,7 +150,7 @@ sections.forEach(s => sectionObserver.observe(s));
         }
         draw() {
             ctx.beginPath(); ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-            ctx.fillStyle = 'rgba(108,99,255,0.45)'; ctx.fill();
+            ctx.fillStyle = 'rgba(165,180,252,0.6)'; ctx.fill();
         }
     }
 
@@ -144,7 +168,7 @@ sections.forEach(s => sectionObserver.observe(s));
                     ctx.beginPath();
                     ctx.moveTo(particles[i].x, particles[i].y);
                     ctx.lineTo(particles[j].x, particles[j].y);
-                    ctx.strokeStyle = `rgba(108,99,255,${0.1 * (1 - d / CONNECT_DIST)})`;
+                    ctx.strokeStyle = `rgba(165,180,252,${0.2 * (1 - d / CONNECT_DIST)})`;
                     ctx.lineWidth = 0.5;
                     ctx.stroke();
                 }
@@ -173,8 +197,6 @@ function initHeroAnimations() {
         'Robotics Developer',
         'Full Stack Developer',
         'AI Enthusiast',
-        'Flight Simulator Intern @ Airbus',
-        'RoboCup 2026 — Team Singapore'
     ];
     const el = document.getElementById('roleText');
     if (!el) return;
@@ -249,11 +271,71 @@ document.querySelectorAll('.tilt').forEach(card => {
     });
 });
 
-// ——————————— SMOOTH SCROLL FOR ANCHOR LINKS ———————————
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-        e.preventDefault();
-        const target = document.querySelector(a.getAttribute('href'));
-        if (target) target.scrollIntoView({ behavior: 'smooth' });
+// Note: Native CSS `scroll-behavior: smooth` on the html element
+// handles smooth scrolling for anchor links. A custom JS-based
+// smooth scroll implementation caused issues on some mobile
+// browsers (notably iPad Safari) where lower sections could
+// become hard to reach after jumping via nav links, so it has
+// been removed in favour of the simpler, more compatible
+// CSS-based approach.
+
+// ——————————— PDF MODAL ———————————
+(() => {
+    const modal = document.getElementById('pdfModal');
+    const viewer = document.getElementById('pdfViewer');
+    const closeBtn = document.getElementById('pdfModalClose');
+    if (!modal || !viewer || !closeBtn) return;
+
+    function openPdf(src) {
+        viewer.src = encodeURI(src);
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closePdf() {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+        // Delay clearing src so transition finishes
+        setTimeout(() => { viewer.src = ''; }, 350);
+    }
+
+    closeBtn.addEventListener('click', closePdf);
+    modal.addEventListener('click', e => {
+        if (e.target === modal) closePdf();
     });
-});
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) closePdf();
+    });
+
+    // Achievement cards with data-pdf
+    document.querySelectorAll('.award[data-pdf]').forEach(card => {
+        card.addEventListener('click', () => {
+            const pdf = card.dataset.pdf;
+            if (pdf) openPdf(pdf);
+        });
+    });
+
+    // Testimonial cards with data-pdf
+    document.querySelectorAll('.testimonial-card[data-pdf]').forEach(card => {
+        card.addEventListener('click', () => {
+            const pdf = card.dataset.pdf;
+            if (pdf) openPdf(pdf);
+        });
+    });
+
+    // Certificate-style cards that open PDFs (education, participation, etc.)
+    document.querySelectorAll('.cert[data-pdf]').forEach(card => {
+        const open = () => {
+            const pdf = card.dataset.pdf;
+            if (pdf) openPdf(pdf);
+        };
+
+        card.addEventListener('click', open);
+        card.addEventListener('keydown', e => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                open();
+            }
+        });
+    });
+})();
