@@ -194,9 +194,8 @@ function initHeroAnimations() {
 // ——————————— TYPING EFFECT ———————————
 (() => {
     const roles = [
-        'Robotics Developer',
+        'Robotics Engineer',
         'Full Stack Developer',
-        'AI Enthusiast',
     ];
     const el = document.getElementById('roleText');
     if (!el) return;
