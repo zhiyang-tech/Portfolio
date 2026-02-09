@@ -286,8 +286,27 @@ document.querySelectorAll('.tilt').forEach(card => {
     const closeBtn = document.getElementById('pdfModalClose');
     if (!modal || !viewer || !closeBtn) return;
 
+    // iPad/iOS Safari is unreliable at rendering PDFs inside <iframe>.
+    // Fallback to opening the PDF in the native viewer so it always works.
+    const isIOS = (() => {
+        const ua = navigator.userAgent || '';
+        const platform = navigator.platform || '';
+        const isAppleMobile = /iPad|iPhone|iPod/.test(ua);
+        // iPadOS can report as MacIntel but with touch points
+        const isIPadOS = platform === 'MacIntel' && navigator.maxTouchPoints > 1;
+        return isAppleMobile || isIPadOS;
+    })();
+
     function openPdf(src) {
-        viewer.src = encodeURI(src);
+        const url = encodeURI(src);
+
+        if (isIOS) {
+            // Open in the same tab for best popup-blocker compatibility.
+            window.location.href = url;
+            return;
+        }
+
+        viewer.src = url;
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
     }
